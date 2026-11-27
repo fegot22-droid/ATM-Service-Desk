@@ -76,10 +76,10 @@ function ThumbnailCard({
 
   return (
     <div
-      className={`group relative bg-white dark:bg-neutral-800 border rounded-xl overflow-hidden transition-colors ${
+      className={`group relative bg-white dark:bg-neutral-800 shadow-xs dark:shadow-none rounded-xl overflow-hidden transition-all ${
         active
-          ? 'border-blue-600 dark:border-blue-500 ring-1 ring-blue-600 dark:ring-blue-500'
-          : 'border-slate-200 dark:border-neutral-700 hover:border-slate-300 dark:hover:border-neutral-600'
+          ? 'ring-2 ring-blue-600 dark:ring-blue-500'
+          : 'hover:ring-1 hover:ring-slate-300 dark:hover:ring-neutral-600'
       }`}
     >
       <button
@@ -104,7 +104,7 @@ function ThumbnailCard({
             />
           )}
         </div>
-        <div className="px-3 py-2 border-t border-slate-100 dark:border-neutral-700 space-y-0.5">
+        <div className="px-3 py-2 border-t border-slate-100 dark:border-white/[0.06] space-y-0.5">
           <p className="text-xs font-medium text-slate-800 dark:text-neutral-100 truncate">{title}</p>
           <p className="text-[11px] text-slate-500 dark:text-neutral-400 truncate tabular-nums">
             {device}
@@ -285,7 +285,7 @@ export function SchemesSensorsView({
       {/* Header & Search Controls */}
       <section
         aria-label="Поиск датчиков и схем"
-        className="bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-xl p-5 sm:p-6 space-y-4 transition-colors"
+        className="bg-white dark:bg-neutral-800 shadow-xs dark:shadow-none rounded-xl p-5 sm:p-6 space-y-4 transition-colors"
       >
         <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
           <div>
@@ -347,7 +347,7 @@ export function SchemesSensorsView({
               value={sensorQuery}
               onChange={(e) => handleSearchChange(e.target.value)}
               placeholder="Поиск элемента: SF17, ССЕ1, PS27, TUB_PS1b, KLS1_1..."
-              className="w-full min-h-[44px] pl-10 pr-10 py-2.5 text-sm font-mono bg-white dark:bg-neutral-900 border border-slate-300 dark:border-neutral-700 rounded-lg text-slate-900 dark:text-neutral-100 placeholder:font-sans placeholder:text-slate-400 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
+              className="w-full min-h-[44px] pl-10 pr-10 py-2.5 text-sm font-mono bg-slate-100 dark:bg-neutral-900 border border-transparent rounded-lg text-slate-900 dark:text-neutral-100 placeholder:font-sans placeholder:text-slate-400 dark:placeholder:text-neutral-500 focus:bg-white dark:focus:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-600"
             />
             {sensorQuery && (
               <button
@@ -369,10 +369,10 @@ export function SchemesSensorsView({
               type="button"
               onClick={() => toggleFavoriteSensor(selectedSensor)}
               aria-pressed={isSelectedFavorite}
-              className={`inline-flex items-center justify-center gap-1.5 min-h-[44px] px-4 py-2 text-xs sm:text-sm font-medium rounded-lg border transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
+              className={`inline-flex items-center justify-center gap-1.5 min-h-[44px] px-4 py-2 text-xs sm:text-sm font-medium rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                 isSelectedFavorite
-                  ? 'bg-amber-50 dark:bg-amber-950/50 text-amber-800 dark:text-amber-200 border-amber-200 dark:border-amber-800/60'
-                  : 'bg-white dark:bg-neutral-700 text-slate-700 dark:text-neutral-100 border-slate-200 dark:border-neutral-600 hover:bg-slate-50 dark:hover:bg-neutral-600'
+                  ? 'bg-amber-50 dark:bg-amber-500/15 text-amber-800 dark:text-amber-200'
+                  : 'bg-slate-100 dark:bg-neutral-700/80 text-slate-700 dark:text-neutral-100 hover:bg-slate-200 dark:hover:bg-neutral-600'
               }`}
             >
               <Star
@@ -392,7 +392,7 @@ export function SchemesSensorsView({
 
         {/* Instant Matching Sensors Strip (visible right below search on mobile & desktop) */}
         {sensorQuery.trim() && (
-          <div className="pt-2 border-t border-slate-100 dark:border-neutral-700 space-y-2">
+          <div className="pt-2 border-t border-slate-100 dark:border-white/[0.06] space-y-2">
             <div className="flex items-baseline justify-between gap-2 text-xs">
               <span className="font-medium text-slate-600 dark:text-neutral-400">
                 {instantMatches.length > 0
@@ -410,10 +410,10 @@ export function SchemesSensorsView({
                       type="button"
                       onClick={() => selectSensorByName(item.name)}
                       aria-pressed={isActive}
-                      className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-mono rounded-md border transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-mono rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                         isActive
-                          ? 'bg-blue-700 dark:bg-blue-600 text-white border-blue-700 dark:border-blue-600 font-semibold'
-                          : 'bg-slate-50 dark:bg-neutral-700 text-slate-800 dark:text-neutral-100 border-slate-200 dark:border-neutral-600 hover:bg-slate-100 dark:hover:bg-neutral-600'
+                          ? 'bg-blue-700 dark:bg-blue-600 text-white font-semibold'
+                          : 'bg-slate-100 dark:bg-neutral-700/80 text-slate-800 dark:text-neutral-100 hover:bg-slate-200 dark:hover:bg-neutral-600'
                       }`}
                     >
                       <span>{item.name}</span>
@@ -441,7 +441,7 @@ export function SchemesSensorsView({
                 key={name}
                 type="button"
                 onClick={() => handleSearchChange(name)}
-                className="px-2.5 py-1.5 sm:py-1 font-mono text-xs text-slate-700 dark:text-neutral-200 bg-slate-50 dark:bg-neutral-700 hover:bg-slate-100 dark:hover:bg-neutral-600 border border-slate-200 dark:border-neutral-600 rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                className="px-2.5 py-1.5 sm:py-1 font-mono text-xs text-slate-700 dark:text-neutral-200 bg-slate-100 dark:bg-neutral-700/80 hover:bg-slate-200 dark:hover:bg-neutral-600 rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
               >
                 {name}
               </button>
@@ -449,7 +449,7 @@ export function SchemesSensorsView({
           </div>
 
           {favoriteSensors.length > 0 && (
-            <div className="flex flex-wrap items-center gap-1.5 pt-1 border-t border-slate-100 dark:border-neutral-700">
+            <div className="flex flex-wrap items-center gap-1.5 pt-1 border-t border-slate-100 dark:border-white/[0.06]">
               <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500 shrink-0" aria-hidden="true" />
               <span className="text-slate-500 dark:text-neutral-400 mr-1">Закреплённые:</span>
               {favoriteSensors.map((name) => (
@@ -457,7 +457,7 @@ export function SchemesSensorsView({
                   key={`fav-sensor-${name}`}
                   type="button"
                   onClick={() => selectSensorByName(name)}
-                  className="px-2.5 py-1 font-mono text-xs text-slate-800 dark:text-amber-200 bg-amber-50/70 dark:bg-amber-950/50 hover:bg-amber-100 dark:hover:bg-amber-900/60 border border-amber-200 dark:border-amber-800/60 rounded transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                  className="px-2.5 py-1 font-mono text-xs text-slate-800 dark:text-amber-200 bg-amber-50 dark:bg-amber-500/15 hover:bg-amber-100 dark:hover:bg-amber-500/25 rounded transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
                 >
                   {name}
                 </button>
@@ -472,7 +472,7 @@ export function SchemesSensorsView({
         {/* Left/Center: Interactive Diagram + Multi-scheme Switcher + Gallery */}
         <div className="xl:col-span-8 space-y-5">
           {sensorHits.length > 1 && (
-            <div className="bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-xl px-4 py-3 flex flex-wrap items-center gap-2">
+            <div className="bg-white dark:bg-neutral-800 shadow-xs dark:shadow-none rounded-xl px-4 py-3 flex flex-wrap items-center gap-2">
               <span className="text-xs font-medium text-slate-600 dark:text-neutral-400 mr-1">
                 Датчик{' '}
                 <span className="font-mono font-semibold text-slate-900 dark:text-neutral-100">
@@ -487,10 +487,10 @@ export function SchemesSensorsView({
                     key={`${hit.scheme.image}-${hit.scheme.part}`}
                     type="button"
                     onClick={() => setActiveImageId(hit.scheme.image)}
-                    className={`px-3 py-1.5 text-xs font-medium rounded-lg border transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
+                    className={`px-3 py-1.5 text-xs font-medium rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                       isCur
-                        ? 'bg-blue-700 dark:bg-blue-600 text-white border-blue-700 dark:border-blue-600'
-                        : 'bg-slate-50 dark:bg-neutral-700 text-slate-700 dark:text-neutral-100 border-slate-200 dark:border-neutral-600 hover:bg-slate-100 dark:hover:bg-neutral-600'
+                        ? 'bg-blue-700 dark:bg-blue-600 text-white'
+                        : 'bg-slate-100 dark:bg-neutral-700/80 text-slate-700 dark:text-neutral-100 hover:bg-slate-200 dark:hover:bg-neutral-600'
                     }`}
                   >
                     {hit.scheme.device} · {hit.scheme.part}
@@ -557,9 +557,9 @@ export function SchemesSensorsView({
         {/* Right: Searchable Sensor Directory */}
         <aside
           aria-label="Справочник датчиков по устройствам"
-          className="xl:col-span-4 bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-xl overflow-hidden"
+          className="xl:col-span-4 bg-white dark:bg-neutral-800 shadow-xs dark:shadow-none rounded-xl overflow-hidden"
         >
-          <div className="px-4 py-3 border-b border-slate-200 dark:border-neutral-700 bg-slate-50/70 dark:bg-neutral-900/60 flex items-baseline justify-between">
+          <div className="px-4 py-3 border-b border-slate-200/70 dark:border-white/[0.06] bg-slate-50/70 dark:bg-neutral-900/60 flex items-baseline justify-between">
             <h2 className="text-sm font-semibold text-slate-900 dark:text-neutral-100">
               Список датчиков и моторов
             </h2>
@@ -568,7 +568,7 @@ export function SchemesSensorsView({
             </span>
           </div>
 
-          <div className="max-h-[760px] overflow-y-auto divide-y divide-slate-100 dark:divide-neutral-700">
+          <div className="max-h-[760px] overflow-y-auto divide-y divide-slate-100 dark:divide-white/[0.06]">
             {deviceDirectories.length === 0 ? (
               <div className="p-6 text-center text-sm text-slate-500 dark:text-neutral-400">
                 Датчики по запросу «{sensorQuery}» не найдены.
@@ -593,10 +593,10 @@ export function SchemesSensorsView({
                           type="button"
                           onClick={() => selectSensorByName(sensorName)}
                           aria-pressed={isActive}
-                          className={`px-3 py-2 sm:px-2 sm:py-1 text-xs font-mono rounded border transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
+                          className={`px-3 py-2 sm:px-2 sm:py-1 text-xs font-mono rounded transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                             isActive
-                              ? 'bg-blue-700 dark:bg-blue-600 text-white border-blue-700 dark:border-blue-600 font-semibold'
-                              : 'bg-slate-50 dark:bg-neutral-700 text-slate-700 dark:text-neutral-200 border-slate-200 dark:border-neutral-600 hover:bg-slate-100 dark:hover:bg-neutral-600 hover:text-slate-900 dark:hover:text-white'
+                              ? 'bg-blue-700 dark:bg-blue-600 text-white font-semibold'
+                              : 'bg-slate-100 dark:bg-neutral-700/80 text-slate-700 dark:text-neutral-200 hover:bg-slate-200 dark:hover:bg-neutral-600 hover:text-slate-900 dark:hover:text-white'
                           }`}
                         >
                           {sensorName}

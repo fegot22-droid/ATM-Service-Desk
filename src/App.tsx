@@ -156,7 +156,7 @@ export default function App() {
   return (
     <div className="min-h-dvh bg-slate-50 dark:bg-neutral-900 text-slate-900 dark:text-neutral-100 flex flex-col">
       {/* Top Bar: static on mobile (keeps <=15% sticky cap with bottom nav), sticky on desktop */}
-      <header className="md:sticky md:top-0 z-30 h-14 bg-white dark:bg-neutral-800 border-b border-slate-200 dark:border-neutral-700 px-4 lg:px-6 flex items-center justify-between gap-4 md:gap-8">
+      <header className="md:sticky md:top-0 z-30 h-14 bg-white dark:bg-neutral-800 border-b border-slate-200/70 dark:border-white/[0.06] px-4 lg:px-6 flex items-center justify-between gap-4 md:gap-8">
         <button
           type="button"
           onClick={() => selectTab('errors')}
@@ -196,7 +196,7 @@ export default function App() {
             aria-pressed={isDark}
             aria-label={isDark ? 'Включить светлую тему' : 'Включить тёмную тему'}
             title={isDark ? 'Светлая тема' : 'Тёмная тема'}
-            className="inline-flex items-center justify-center min-h-[40px] min-w-[40px] p-2 rounded-lg border border-slate-200 dark:border-neutral-600 bg-slate-50 dark:bg-neutral-700 text-slate-700 dark:text-neutral-100 hover:bg-slate-100 dark:hover:bg-neutral-600 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+            className="inline-flex items-center justify-center min-h-[40px] min-w-[40px] p-2 rounded-lg bg-slate-100 dark:bg-neutral-700/80 text-slate-700 dark:text-neutral-100 hover:bg-slate-200 dark:hover:bg-neutral-600 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
           >
             {isDark ? (
               <Sun className="w-4 h-4 text-amber-400" aria-hidden="true" />
@@ -223,7 +223,7 @@ export default function App() {
       <div className="flex-1 max-w-[1440px] w-full mx-auto flex">
         <aside
           aria-label="Навигация рабочего места"
-          className="hidden lg:flex lg:flex-col lg:w-64 shrink-0 border-r border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-4 justify-between"
+          className="hidden lg:flex lg:flex-col lg:w-64 shrink-0 border-r border-slate-200/70 dark:border-white/[0.06] bg-white dark:bg-neutral-800 p-4 justify-between"
         >
           <div className="space-y-6">
             <nav aria-label="Разделы справочника" className="space-y-1">
@@ -250,7 +250,7 @@ export default function App() {
             </nav>
 
             {favorites.length > 0 && (
-              <div className="pt-5 border-t border-slate-100 dark:border-neutral-700 space-y-2 px-2">
+              <div className="pt-5 border-t border-slate-100 dark:border-white/[0.06] space-y-2 px-2">
                 <p className="text-xs font-semibold text-slate-500 dark:text-neutral-400 flex items-center gap-1.5">
                   <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" aria-hidden="true" />
                   <span>Избранные коды</span>
@@ -277,7 +277,7 @@ export default function App() {
             )}
 
             {data.status === 'ready' && data.errorDb && data.schemesDb && (
-              <div className="pt-5 border-t border-slate-100 dark:border-neutral-700 space-y-2.5 px-2">
+              <div className="pt-5 border-t border-slate-100 dark:border-white/[0.06] space-y-2.5 px-2">
                 <p className="text-xs font-semibold text-slate-500 dark:text-neutral-400">
                   Состав справочника
                 </p>
@@ -300,7 +300,7 @@ export default function App() {
                       {data.errorDb.meta.cmd_v4_count}
                     </dd>
                   </div>
-                  <div className="flex items-center justify-between text-slate-600 dark:text-neutral-400 pt-1.5 border-t border-slate-100 dark:border-neutral-700">
+                  <div className="flex items-center justify-between text-slate-600 dark:text-neutral-400 pt-1.5 border-t border-slate-100 dark:border-white/[0.06]">
                     <dt>Всего кодов</dt>
                     <dd className="font-mono font-semibold tabular-nums text-slate-900 dark:text-neutral-100">
                       {totalErrorCodes.toLocaleString('ru-RU')}
@@ -323,7 +323,7 @@ export default function App() {
             )}
           </div>
 
-          <div className="space-y-3 pt-4 border-t border-slate-100 dark:border-neutral-700">
+          <div className="space-y-3 pt-4 border-t border-slate-100 dark:border-white/[0.06]">
             <div className="px-1">
               <PWAInstallControl />
             </div>
@@ -339,12 +339,12 @@ export default function App() {
               className="space-y-6 animate-pulse"
               aria-label="Загрузка справочника"
             >
-              <div className="bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-xl p-6 space-y-4">
+              <div className="bg-white dark:bg-neutral-800 shadow-xs dark:shadow-none rounded-xl p-6 space-y-4">
                 <div className="h-7 w-72 bg-slate-200 dark:bg-neutral-700 rounded" />
                 <div className="h-4 w-96 max-w-full bg-slate-100 dark:bg-neutral-700/70 rounded" />
                 <div className="h-10 w-full bg-slate-100 dark:bg-neutral-700/70 rounded-lg" />
               </div>
-              <div className="bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-xl p-6 space-y-3">
+              <div className="bg-white dark:bg-neutral-800 shadow-xs dark:shadow-none rounded-xl p-6 space-y-3">
                 <div className="h-5 w-48 bg-slate-200 dark:bg-neutral-700 rounded" />
                 <div className="h-24 w-full bg-slate-100 dark:bg-neutral-700/70 rounded-lg" />
               </div>
@@ -354,7 +354,7 @@ export default function App() {
           {data.status === 'error' && (
             <div
               role="alert"
-              className="bg-white dark:bg-neutral-800 border border-red-200 dark:border-red-900/60 rounded-xl p-8 text-center max-w-lg mx-auto my-8 space-y-4"
+              className="bg-white dark:bg-neutral-800 shadow-xs dark:shadow-none rounded-xl p-8 text-center max-w-lg mx-auto my-8 space-y-4"
             >
               <AlertCircle
                 className="w-10 h-10 text-red-600 dark:text-red-400 mx-auto"
@@ -432,7 +432,7 @@ export default function App() {
       {/* Android-native Bottom Navigation Bar (thumb-zone ergonomic, < 768px) */}
       <nav
         aria-label="Нижняя навигация"
-        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-neutral-800/95 backdrop-blur-md border-t border-slate-200 dark:border-neutral-700 pb-safe"
+        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-neutral-800/95 backdrop-blur-md border-t border-slate-200/70 dark:border-white/[0.06] pb-safe"
       >
         <div className="grid grid-cols-3 h-16">
           {NAV_ITEMS.map((item) => {

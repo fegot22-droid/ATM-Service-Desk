@@ -40,6 +40,7 @@ interface SchemeViewerProps {
   onSelectSensor?: (sensorName: string) => void;
   onLookupErrorsForSensor?: (sensorName: string) => void;
   compact?: boolean;
+  embedded?: boolean;
   fullscreenTrigger?: number;
 }
 
@@ -559,6 +560,7 @@ export function SchemeViewer({
   onSelectSensor,
   onLookupErrorsForSensor,
   compact = false,
+  embedded = false,
   fullscreenTrigger,
 }: SchemeViewerProps) {
   const [zoom, setZoom] = useState(1);
@@ -634,8 +636,8 @@ export function SchemeViewer({
           aria-label={`Схема: ${title}`}
           className="fixed inset-0 z-50 bg-neutral-950/90 backdrop-blur-xs flex flex-col sm:p-4"
         >
-          <div className="bg-white dark:bg-neutral-800 border-0 sm:border border-slate-200 dark:border-neutral-700 sm:rounded-xl overflow-hidden flex flex-col flex-1 min-h-0 shadow-2xl">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-3.5 sm:px-4 py-2.5 sm:py-3 border-b border-slate-200 dark:border-neutral-700 bg-slate-50 dark:bg-neutral-900/70">
+          <div className="bg-white dark:bg-neutral-800 sm:rounded-xl overflow-hidden flex flex-col flex-1 min-h-0 shadow-2xl">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-3.5 sm:px-4 py-2.5 sm:py-3 border-b border-slate-200/70 dark:border-white/[0.06] bg-slate-50 dark:bg-neutral-900/70">
               <div className="flex items-start justify-between gap-2 min-w-0 flex-1">
                 <div className="min-w-0">
                   <h2 className="text-sm sm:text-base font-semibold text-slate-900 dark:text-neutral-100 truncate">
@@ -667,10 +669,10 @@ export function SchemeViewer({
                     type="button"
                     onClick={() => setShowAllPins((v) => !v)}
                     aria-pressed={showAllPins}
-                    className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 min-h-[40px] sm:min-h-0 text-xs font-medium rounded-lg border transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
+                    className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 min-h-[40px] sm:min-h-0 text-xs font-medium rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                       showAllPins
-                        ? 'bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800'
-                        : 'bg-white dark:bg-neutral-700 text-slate-700 dark:text-neutral-100 border-slate-200 dark:border-neutral-600 hover:bg-slate-50 dark:hover:bg-neutral-600'
+                        ? 'bg-blue-50 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300'
+                        : 'bg-slate-100 dark:bg-neutral-700/80 text-slate-700 dark:text-neutral-100 hover:bg-slate-200 dark:hover:bg-neutral-600'
                     }`}
                   >
                     {showAllPins ? (
@@ -690,7 +692,7 @@ export function SchemeViewer({
                 )}
 
                 <div
-                  className="inline-flex items-center border border-slate-200 dark:border-neutral-600 rounded-lg bg-white dark:bg-neutral-700 overflow-hidden"
+                  className="inline-flex items-center rounded-lg bg-slate-100 dark:bg-neutral-700/80 overflow-hidden"
                   role="group"
                   aria-label="Масштаб полноэкранной схемы"
                 >
@@ -699,11 +701,11 @@ export function SchemeViewer({
                     onClick={() => setFsZoom((z) => stepZoomDown(z))}
                     disabled={fsZoom <= MIN_PINCH_ZOOM + 0.01}
                     aria-label="Уменьшить масштаб"
-                    className="p-2 min-h-[40px] min-w-[38px] flex items-center justify-center text-slate-600 dark:text-neutral-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-neutral-600 disabled:opacity-40 cursor-pointer"
+                    className="p-2 min-h-[40px] min-w-[38px] flex items-center justify-center text-slate-600 dark:text-neutral-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-neutral-600 disabled:opacity-40 cursor-pointer"
                   >
                     <ZoomOut className="w-4 h-4" aria-hidden="true" />
                   </button>
-                  <span className="px-2 text-xs font-mono tabular-nums text-slate-700 dark:text-neutral-100 border-x border-slate-200 dark:border-neutral-600 select-none">
+                  <span className="px-2 text-xs font-mono tabular-nums text-slate-700 dark:text-neutral-100 border-x border-slate-200/80 dark:border-white/[0.08] select-none">
                     {Math.round(fsZoom * 100)}%
                   </span>
                   <button
@@ -711,7 +713,7 @@ export function SchemeViewer({
                     onClick={() => setFsZoom((z) => stepZoomUp(z))}
                     disabled={fsZoom >= MAX_PINCH_ZOOM - 0.01}
                     aria-label="Увеличить масштаб"
-                    className="p-2 min-h-[40px] min-w-[38px] flex items-center justify-center text-slate-600 dark:text-neutral-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-neutral-600 disabled:opacity-40 cursor-pointer"
+                    className="p-2 min-h-[40px] min-w-[38px] flex items-center justify-center text-slate-600 dark:text-neutral-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-neutral-600 disabled:opacity-40 cursor-pointer"
                   >
                     <ZoomIn className="w-4 h-4" aria-hidden="true" />
                   </button>
@@ -720,7 +722,7 @@ export function SchemeViewer({
                       type="button"
                       onClick={() => setFsZoom(MIN_PINCH_ZOOM)}
                       aria-label="Сбросить масштаб"
-                      className="p-2 min-h-[40px] min-w-[38px] flex items-center justify-center text-slate-500 dark:text-neutral-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-neutral-600 border-l border-slate-200 dark:border-neutral-600 cursor-pointer"
+                      className="p-2 min-h-[40px] min-w-[38px] flex items-center justify-center text-slate-500 dark:text-neutral-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-neutral-600 border-l border-slate-200/80 dark:border-white/[0.08] cursor-pointer"
                     >
                       <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
                     </button>
@@ -757,7 +759,7 @@ export function SchemeViewer({
               />
             </div>
 
-            <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5 border-t border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-xs text-slate-600 dark:text-neutral-400">
+            <div className="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5 border-t border-slate-200/70 dark:border-white/[0.06] bg-white dark:bg-neutral-800 text-xs text-slate-600 dark:text-neutral-400">
               <span>
                 {fsZoom > 1
                   ? 'Двигайте пальцем для обзора · сводите/разводите пальцы для масштаба · двойной тап — сброс'
@@ -783,9 +785,21 @@ export function SchemeViewer({
     : null;
 
   return (
-    <div className="bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-xl overflow-hidden">
+    <div
+      className={`rounded-xl overflow-hidden ${
+        embedded
+          ? 'bg-slate-100/80 dark:bg-neutral-900/70'
+          : 'bg-white dark:bg-neutral-800 shadow-xs dark:shadow-none'
+      }`}
+    >
       {/* Toolbar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 border-b border-slate-200 dark:border-neutral-700 bg-slate-50/70 dark:bg-neutral-900/60">
+      <div
+        className={`flex flex-wrap items-center justify-between gap-3 px-4 py-3 ${
+          embedded
+            ? 'border-b border-slate-200/60 dark:border-white/[0.06]'
+            : 'border-b border-slate-200/70 dark:border-white/[0.06] bg-slate-50/70 dark:bg-neutral-900/60'
+        }`}
+      >
         <div className="min-w-0">
           <h3 className="text-sm font-semibold text-slate-900 dark:text-neutral-100 truncate">
             {title}
@@ -803,10 +817,10 @@ export function SchemeViewer({
               type="button"
               onClick={() => setShowAllPins((v) => !v)}
               aria-pressed={showAllPins}
-              className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 min-h-[40px] sm:min-h-0 text-xs font-medium rounded-lg border transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
+              className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 min-h-[40px] sm:min-h-0 text-xs font-medium rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                 showAllPins
-                  ? 'bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border-blue-200 dark:border-blue-800'
-                  : 'bg-white dark:bg-neutral-700 text-slate-700 dark:text-neutral-100 border-slate-200 dark:border-neutral-600 hover:bg-slate-50 dark:hover:bg-neutral-600'
+                  ? 'bg-blue-50 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300'
+                  : 'bg-slate-100 dark:bg-neutral-700/80 text-slate-700 dark:text-neutral-100 hover:bg-slate-200 dark:hover:bg-neutral-600'
               }`}
             >
               {showAllPins ? (
@@ -826,7 +840,7 @@ export function SchemeViewer({
           )}
 
           <div
-            className="inline-flex items-center border border-slate-200 dark:border-neutral-600 rounded-lg bg-white dark:bg-neutral-700 overflow-hidden"
+            className="inline-flex items-center rounded-lg bg-slate-100 dark:bg-neutral-700/80 overflow-hidden"
             role="group"
             aria-label="Масштаб схемы"
           >
@@ -835,11 +849,11 @@ export function SchemeViewer({
               onClick={() => setZoom((z) => stepZoomDown(z))}
               disabled={zoom <= MIN_PINCH_ZOOM + 0.01}
               aria-label="Уменьшить масштаб"
-              className="p-2 sm:p-1.5 min-h-[40px] min-w-[36px] sm:min-h-0 sm:min-w-0 flex items-center justify-center text-slate-600 dark:text-neutral-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-neutral-600 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-600"
+              className="p-2 sm:p-1.5 min-h-[40px] min-w-[36px] sm:min-h-0 sm:min-w-0 flex items-center justify-center text-slate-600 dark:text-neutral-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-neutral-600 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-600"
             >
               <ZoomOut className="w-4 h-4" aria-hidden="true" />
             </button>
-            <span className="px-2 text-xs font-mono tabular-nums text-slate-700 dark:text-neutral-100 border-x border-slate-200 dark:border-neutral-600 select-none">
+            <span className="px-2 text-xs font-mono tabular-nums text-slate-700 dark:text-neutral-100 border-x border-slate-200/80 dark:border-white/[0.08] select-none">
               {Math.round(zoom * 100)}%
             </span>
             <button
@@ -847,7 +861,7 @@ export function SchemeViewer({
               onClick={() => setZoom((z) => stepZoomUp(z))}
               disabled={zoom >= MAX_PINCH_ZOOM - 0.01}
               aria-label="Увеличить масштаб"
-              className="p-2 sm:p-1.5 min-h-[40px] min-w-[36px] sm:min-h-0 sm:min-w-0 flex items-center justify-center text-slate-600 dark:text-neutral-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-neutral-600 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-600"
+              className="p-2 sm:p-1.5 min-h-[40px] min-w-[36px] sm:min-h-0 sm:min-w-0 flex items-center justify-center text-slate-600 dark:text-neutral-200 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-neutral-600 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-600"
             >
               <ZoomIn className="w-4 h-4" aria-hidden="true" />
             </button>
@@ -856,7 +870,7 @@ export function SchemeViewer({
                 type="button"
                 onClick={() => setZoom(MIN_PINCH_ZOOM)}
                 aria-label="Сбросить масштаб"
-                className="p-2 sm:p-1.5 min-h-[40px] min-w-[36px] sm:min-h-0 sm:min-w-0 flex items-center justify-center text-slate-500 dark:text-neutral-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-neutral-600 border-l border-slate-200 dark:border-neutral-600 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-600"
+                className="p-2 sm:p-1.5 min-h-[40px] min-w-[36px] sm:min-h-0 sm:min-w-0 flex items-center justify-center text-slate-500 dark:text-neutral-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-neutral-600 border-l border-slate-200/80 dark:border-white/[0.08] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-600"
               >
                 <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
               </button>
@@ -867,7 +881,7 @@ export function SchemeViewer({
             type="button"
             onClick={openFullscreen}
             aria-label="Открыть схему на весь экран"
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 min-h-[40px] sm:min-h-0 text-xs font-medium text-slate-700 dark:text-neutral-100 bg-white dark:bg-neutral-700 hover:bg-slate-50 dark:hover:bg-neutral-600 border border-slate-200 dark:border-neutral-600 rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 min-h-[40px] sm:min-h-0 text-xs font-medium text-slate-700 dark:text-neutral-100 bg-slate-100 dark:bg-neutral-700/80 hover:bg-slate-200 dark:hover:bg-neutral-600 rounded-lg transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
           >
             <Expand className="w-3.5 h-3.5" aria-hidden="true" />
             <span className="hidden sm:inline">На весь экран</span>
@@ -894,7 +908,11 @@ export function SchemeViewer({
       />
 
       {/* Footer info / active sensor actions */}
-      <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 border-t border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 text-xs text-slate-600 dark:text-neutral-400">
+      <div
+        className={`flex flex-wrap items-center justify-between gap-3 px-4 py-2.5 border-t border-slate-200/60 dark:border-white/[0.06] text-xs text-slate-600 dark:text-neutral-400 ${
+          embedded ? '' : 'bg-white dark:bg-neutral-800'
+        }`}
+      >
         <div className="flex flex-wrap items-center gap-2">
           {activeSensorLabel ? (
             <>

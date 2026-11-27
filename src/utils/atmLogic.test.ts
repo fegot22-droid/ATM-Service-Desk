@@ -23,6 +23,7 @@ import {
   splitTextWithSensors,
 } from './sensorLookup';
 import {parseGuideMarkdown, searchAllGuides, segmentGuideText} from './guideParser';
+import {getGuideImageUrl} from './assetPaths';
 import {parseUrlState, serializeUrlState} from './urlState';
 import {getNextTheme, parseStoredTheme, resolveTheme} from './theme';
 import {
@@ -297,4 +298,18 @@ test('pinchZoom helpers clamp scale, track finger distance/midpoint, and anchor 
     currentScrollTop: 50,
   });
   assert.deepEqual(panOnly, {scrollLeft: 80, scrollTop: 70});
+});
+
+test('all 25 GRG guide images and GRG_nastroika.pdf exist and resolve via getGuideImageUrl', () => {
+  const grgRaw = fs.readFileSync(path.join(DATA_DIR, 'grg_1ebb89c6.md'), 'utf-8');
+  const grg = parseGuideMarkdown('grg', 'GRG', 'GRG_nastroika.pdf', grgRaw);
+  const guidesAssetDir = path.resolve(process.cwd(), 'public/assets/guides');
+  assert.ok(fs.existsSync(path.join(guidesAssetDir, 'GRG_nastroika.pdf')));
+
+  const imgBlocks = grg.sections.flatMap((s) => s.blocks).filter((b) => b.kind === 'img');
+  assert.equal(imgBlocks.length, 25);
+  for (const block of imgBlocks) {
+    assert.ok(fs.existsSync(path.join(guidesAssetDir, block.value)), block.value);
+    assert.ok(getGuideImageUrl(block.value).endsWith(block.value), block.value);
+  }
 });

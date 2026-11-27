@@ -83,5 +83,6 @@ export interface Guide {
   title: string;
   subtitle: string;
   sourceFileName: string;
+  sourceFileUrl?: string;
   sections: GuideSection[];
 }

@@ -132,7 +132,7 @@ function InteractiveSensorText({
             type="button"
             onClick={() => onOpenSensor(part.sensorName!, part.device)}
             title={`Открыть датчик ${part.sensorName} на схеме`}
-            className="inline-flex items-center gap-0.5 px-1.5 py-0.5 mx-0.5 font-mono text-[0.9em] font-semibold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 dark:hover:bg-blue-900/60 border border-blue-200 dark:border-blue-800 rounded transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 align-baseline"
+            className="inline-flex items-center gap-0.5 px-1.5 py-0.5 mx-0.5 font-mono text-[0.9em] font-semibold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-500/15 hover:bg-blue-100 dark:hover:bg-blue-500/25 rounded transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 align-baseline"
           >
             <span>{part.value}</span>
             <ArrowUpRight className="w-3 h-3 shrink-0" aria-hidden="true" />
@@ -319,7 +319,7 @@ export function ErrorLookupView({
       {/* Search & Mode Control Panel */}
       <section
         aria-label="Поиск кодов ошибок"
-        className="bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-xl p-5 sm:p-6 space-y-4 transition-colors"
+        className="bg-white dark:bg-neutral-800 shadow-xs dark:shadow-none rounded-xl p-5 sm:p-6 space-y-4 transition-colors"
       >
         <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
           <div>
@@ -391,7 +391,7 @@ export function ErrorLookupView({
                 }
               }}
               placeholder="Например: -1335, 25523, 08, SF17 или shutter"
-              className="w-full min-h-[44px] pl-10 pr-10 py-2.5 text-sm font-mono bg-white dark:bg-neutral-900 border border-slate-300 dark:border-neutral-700 rounded-lg text-slate-900 dark:text-neutral-100 placeholder:font-sans placeholder:text-slate-400 dark:placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
+              className="w-full min-h-[44px] pl-10 pr-10 py-2.5 text-sm font-mono bg-slate-100 dark:bg-neutral-900 border border-transparent rounded-lg text-slate-900 dark:text-neutral-100 placeholder:font-sans placeholder:text-slate-400 dark:placeholder:text-neutral-500 focus:bg-white dark:focus:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-blue-600"
             />
             {inputValue && (
               <button
@@ -425,7 +425,7 @@ export function ErrorLookupView({
                 key={ex.label}
                 type="button"
                 onClick={() => runSearch(ex.query, ex.mode ?? 'all')}
-                className="px-2.5 py-1.5 sm:py-1 font-mono text-xs text-slate-700 dark:text-neutral-200 bg-slate-50 dark:bg-neutral-700 hover:bg-slate-100 dark:hover:bg-neutral-600 border border-slate-200 dark:border-neutral-600 rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                className="px-2.5 py-1.5 sm:py-1 font-mono text-xs text-slate-700 dark:text-neutral-200 bg-slate-100 dark:bg-neutral-700/80 hover:bg-slate-200 dark:hover:bg-neutral-600 rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
               >
                 {ex.label}
               </button>
@@ -433,7 +433,7 @@ export function ErrorLookupView({
           </div>
 
           {favorites.length > 0 && (
-            <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-100 dark:border-neutral-700 text-xs">
+            <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-100 dark:border-white/[0.06] text-xs">
               <Bookmark className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0" aria-hidden="true" />
               <span className="text-slate-500 dark:text-neutral-400 mr-1">Избранное:</span>
               {favorites.map((fav) => (
@@ -442,7 +442,7 @@ export function ErrorLookupView({
                   type="button"
                   onClick={() => runSearch(fav.key, fav.category)}
                   title={fav.summary}
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 font-mono text-xs text-slate-800 dark:text-amber-200 bg-amber-50/70 dark:bg-amber-950/50 hover:bg-amber-100/80 dark:hover:bg-amber-900/60 border border-amber-200 dark:border-amber-800/60 rounded transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1 font-mono text-xs text-slate-800 dark:text-amber-200 bg-amber-50 dark:bg-amber-500/15 hover:bg-amber-100 dark:hover:bg-amber-500/25 rounded transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
                 >
                   <span className="font-semibold">{fav.key}</span>
                   <span className="font-sans text-[11px] text-slate-500 dark:text-amber-300/70">
@@ -454,7 +454,7 @@ export function ErrorLookupView({
           )}
 
           {history.length > 0 && (
-            <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 dark:border-neutral-700 text-xs">
+            <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-100 dark:border-white/[0.06] text-xs">
               <div className="flex flex-wrap items-center gap-1.5">
                 <History className="w-3.5 h-3.5 text-slate-400 dark:text-neutral-500 shrink-0" aria-hidden="true" />
                 <span className="text-slate-500 dark:text-neutral-400 mr-1">Недавние:</span>
@@ -463,7 +463,7 @@ export function ErrorLookupView({
                     key={item}
                     type="button"
                     onClick={() => runSearch(item, mode)}
-                    className="px-2 py-1 font-mono text-xs text-slate-700 dark:text-neutral-200 bg-white dark:bg-neutral-700 hover:bg-slate-50 dark:hover:bg-neutral-600 border border-slate-200 dark:border-neutral-600 rounded transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                    className="px-2 py-1 font-mono text-xs text-slate-700 dark:text-neutral-200 bg-slate-100 dark:bg-neutral-700/80 hover:bg-slate-200 dark:hover:bg-neutral-600 rounded transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
                   >
                     {item}
                   </button>
@@ -484,7 +484,7 @@ export function ErrorLookupView({
 
       {/* Empty initial state */}
       {!submittedQuery && (
-        <section className="bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-xl p-8 text-center">
+        <section className="bg-white dark:bg-neutral-800 shadow-xs dark:shadow-none rounded-xl p-8 text-center">
           <p className="text-base font-semibold text-slate-900 dark:text-neutral-100">
             Введите код ошибки для расшифровки
           </p>
@@ -517,7 +517,7 @@ export function ErrorLookupView({
               </div>
 
               {items.length === 0 ? (
-                <div className="bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-xl p-5 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-600 dark:text-neutral-400">
+                <div className="bg-white dark:bg-neutral-800 shadow-xs dark:shadow-none rounded-xl p-5 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-600 dark:text-neutral-400">
                   <span>
                     Код <span className="font-mono font-semibold text-slate-900 dark:text-neutral-100">{code}</span> не
                     найден
@@ -529,7 +529,7 @@ export function ErrorLookupView({
                     <button
                       type="button"
                       onClick={() => setMode('all')}
-                      className="px-3 py-1.5 text-xs font-medium text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 dark:hover:bg-blue-900/60 border border-blue-200 dark:border-blue-800 rounded-lg cursor-pointer"
+                      className="px-3 py-1.5 text-xs font-medium text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-500/15 hover:bg-blue-100 dark:hover:bg-blue-500/25 rounded-lg cursor-pointer"
                     >
                       Искать по всем базам
                     </button>
@@ -560,10 +560,10 @@ export function ErrorLookupView({
                     return (
                       <article
                         key={cardId}
-                        className="bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-xl overflow-hidden transition-colors"
+                        className="bg-white dark:bg-neutral-800 shadow-xs dark:shadow-none rounded-xl overflow-hidden transition-colors"
                       >
                         {/* Card header */}
-                        <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 border-b border-slate-100 dark:border-neutral-700">
+                        <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 border-b border-slate-100 dark:border-white/[0.06]">
                           <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-neutral-400">
                             <span className="font-semibold text-blue-700 dark:text-blue-400">
                               {CATEGORY_TITLES[match.category]}
@@ -602,10 +602,10 @@ export function ErrorLookupView({
                                   ? `Убрать код ${match.key} из избранного`
                                   : `Добавить код ${match.key} в избранное`
                               }
-                              className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:py-1 text-xs font-medium rounded-md border transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
+                              className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:py-1 text-xs font-medium rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                                 isFavorite
-                                  ? 'text-amber-800 dark:text-amber-200 bg-amber-50 dark:bg-amber-950/50 border-amber-200 dark:border-amber-800/60'
-                                  : 'text-slate-600 dark:text-neutral-200 hover:text-slate-900 dark:hover:text-white bg-slate-50 dark:bg-neutral-700 hover:bg-slate-100 dark:hover:bg-neutral-600 border-slate-200 dark:border-neutral-600'
+                                  ? 'text-amber-800 dark:text-amber-200 bg-amber-50 dark:bg-amber-500/15'
+                                  : 'text-slate-600 dark:text-neutral-200 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-neutral-700/80 hover:bg-slate-200 dark:hover:bg-neutral-600'
                               }`}
                             >
                               <Star
@@ -620,7 +620,7 @@ export function ErrorLookupView({
                             <button
                               type="button"
                               onClick={() => handleCopy(cardId, copyText)}
-                              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:py-1 text-xs font-medium text-slate-600 dark:text-neutral-200 hover:text-slate-900 dark:hover:text-white bg-slate-50 dark:bg-neutral-700 hover:bg-slate-100 dark:hover:bg-neutral-600 border border-slate-200 dark:border-neutral-600 rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:py-1 text-xs font-medium text-slate-600 dark:text-neutral-200 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-neutral-700/80 hover:bg-slate-200 dark:hover:bg-neutral-600 rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
                             >
                               {copiedId === cardId ? (
                                 <>
@@ -639,7 +639,7 @@ export function ErrorLookupView({
 
                         {/* Sign mismatch notice */}
                         {!match.signMatches && (
-                          <div className="flex items-center gap-2 px-5 py-2.5 bg-amber-50 dark:bg-amber-950/40 border-b border-amber-200/70 dark:border-amber-800/60 text-xs text-amber-900 dark:text-amber-200">
+                          <div className="flex items-center gap-2 px-5 py-2.5 bg-amber-50 dark:bg-amber-500/10 text-xs text-amber-900 dark:text-amber-200">
                             <AlertTriangle
                               className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0"
                               aria-hidden="true"
@@ -669,7 +669,7 @@ export function ErrorLookupView({
                           </div>
 
                           {match.parsed.recommendations && (
-                            <div className="p-3.5 rounded-lg bg-slate-50 dark:bg-neutral-900/80 border border-slate-200 dark:border-neutral-700">
+                            <div className="p-3.5 rounded-lg bg-slate-100/80 dark:bg-neutral-900/70">
                               <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-700 dark:text-neutral-200 mb-1">
                                 <Wrench className="w-3.5 h-3.5 text-blue-700 dark:text-blue-400" aria-hidden="true" />
                                 <span>Рекомендации по устранению</span>
@@ -687,7 +687,7 @@ export function ErrorLookupView({
 
                           {/* Auto-linked sensors & schematic previews */}
                           {hints.pairs.length > 0 && (
-                            <div className="pt-3 border-t border-slate-100 dark:border-neutral-700 space-y-3">
+                            <div className="pt-3 border-t border-slate-100 dark:border-white/[0.06] space-y-3">
                               <div className="flex flex-wrap items-center justify-between gap-2">
                                 <span className="text-xs font-semibold text-slate-700 dark:text-neutral-300">
                                   Упомянутые датчики на схемах
@@ -700,7 +700,7 @@ export function ErrorLookupView({
                                       onClick={() =>
                                         onOpenSensorInSchemes(pair.name, pair.device)
                                       }
-                                      className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-mono font-medium text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 dark:hover:bg-blue-900/60 border border-blue-200 dark:border-blue-800 rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                                      className="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-mono font-medium text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-500/15 hover:bg-blue-100 dark:hover:bg-blue-500/25 rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
                                     >
                                       <span>{pair.name}</span>
                                       <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
@@ -728,6 +728,7 @@ export function ErrorLookupView({
                                       onOpenSensorInSchemes(sName, preview.scheme.device)
                                     }
                                     compact
+                                    embedded
                                   />
                                 ))}
                               </div>
@@ -798,11 +799,11 @@ export function ErrorLookupView({
             </span>
           </div>
 
-          <div className="bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-xl divide-y divide-slate-100 dark:divide-neutral-700">
+          <div className="bg-white dark:bg-neutral-800 shadow-xs dark:shadow-none rounded-xl divide-y divide-slate-100 dark:divide-white/[0.06]">
             {lookupResult.keywordMatches.map((item) => (
               <div
                 key={`${item.category}:${item.key}`}
-                className="p-4 flex flex-col sm:flex-row sm:items-start justify-between gap-3 hover:bg-slate-50/60 dark:hover:bg-neutral-700/50 transition-colors"
+                className="p-4 flex flex-col sm:flex-row sm:items-start justify-between gap-3 hover:bg-slate-50/60 dark:hover:bg-neutral-700/40 transition-colors"
               >
                 <div className="space-y-1 min-w-0">
                   <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 dark:text-neutral-400">
@@ -830,7 +831,7 @@ export function ErrorLookupView({
                 <button
                   type="button"
                   onClick={() => runSearch(item.key, item.category)}
-                  className="px-3 py-1.5 min-h-[36px] text-xs font-medium text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 dark:hover:bg-blue-900/60 border border-blue-200 dark:border-blue-800 rounded-lg whitespace-nowrap shrink-0 self-start cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                  className="px-3 py-1.5 min-h-[36px] text-xs font-medium text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-500/15 hover:bg-blue-100 dark:hover:bg-blue-500/25 rounded-lg whitespace-nowrap shrink-0 self-start cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
                 >
                   Открыть карточку
                 </button>
@@ -843,7 +844,7 @@ export function ErrorLookupView({
               <button
                 type="button"
                 onClick={() => setKeywordLimit((n) => n + 50)}
-                className="px-4 py-2 text-xs font-medium text-slate-700 dark:text-neutral-200 bg-white dark:bg-neutral-800 hover:bg-slate-50 dark:hover:bg-neutral-700 border border-slate-200 dark:border-neutral-700 rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                className="px-4 py-2 text-xs font-medium text-slate-700 dark:text-neutral-200 bg-white dark:bg-neutral-800 hover:bg-slate-50 dark:hover:bg-neutral-700 shadow-xs dark:shadow-none rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
               >
                 Показать ещё ({lookupResult.keywordTotal - lookupResult.keywordMatches.length})
               </button>
@@ -857,7 +858,7 @@ export function ErrorLookupView({
         totalErrorMatches === 0 &&
         lookupResult.directSensors.length === 0 &&
         lookupResult.keywordMatches.length === 0 && (
-          <section className="bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-xl p-8 text-center space-y-3">
+          <section className="bg-white dark:bg-neutral-800 shadow-xs dark:shadow-none rounded-xl p-8 text-center space-y-3">
             <p className="text-base font-semibold text-slate-900 dark:text-neutral-100">
               Ничего не найдено по запросу «{submittedQuery}»
             </p>
@@ -868,7 +869,7 @@ export function ErrorLookupView({
               <button
                 type="button"
                 onClick={() => setMode('all')}
-                className="inline-flex px-4 py-2 text-xs font-medium text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/60 hover:bg-blue-100 dark:hover:bg-blue-900/60 border border-blue-200 dark:border-blue-800 rounded-lg cursor-pointer"
+                className="inline-flex px-4 py-2 text-xs font-medium text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-500/15 hover:bg-blue-100 dark:hover:bg-blue-500/25 rounded-lg cursor-pointer"
               >
                 Сбросить фильтр на «Все базы»
               </button>

@@ -43,7 +43,7 @@ export function PWAInstallControl({compact = false}: PWAInstallControlProps) {
           aria-labelledby="pwa-guide-title"
           className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-slate-900/50 dark:bg-neutral-950/80 backdrop-blur-xs p-0 sm:p-4"
         >
-          <div className="w-full sm:max-w-md bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-t-2xl sm:rounded-2xl p-6 pb-safe space-y-4 shadow-xl">
+          <div className="w-full sm:max-w-md bg-white dark:bg-neutral-800 rounded-t-2xl sm:rounded-2xl p-6 pb-safe space-y-4 shadow-xl">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <h2
@@ -113,7 +113,7 @@ export function PWAInstallControl({compact = false}: PWAInstallControlProps) {
         className={`inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
           isInstallable
             ? 'bg-blue-700 hover:bg-blue-800 text-white px-3.5 py-2 text-xs sm:text-sm min-h-[40px]'
-            : 'bg-slate-100 dark:bg-neutral-700 hover:bg-slate-200 dark:hover:bg-neutral-600 text-slate-800 dark:text-neutral-100 border border-slate-200 dark:border-neutral-600 px-3 py-2 text-xs sm:text-sm min-h-[40px]'
+            : 'bg-slate-100 dark:bg-neutral-700/80 hover:bg-slate-200 dark:hover:bg-neutral-600 text-slate-800 dark:text-neutral-100 px-3 py-2 text-xs sm:text-sm min-h-[40px]'
         }`}
       >
         {isInstallable ? (

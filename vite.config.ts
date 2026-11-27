@@ -60,12 +60,12 @@ export default defineConfig(() => {
           globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,json,md,woff,woff2}'],
           runtimeCaching: [
             {
-              urlPattern: /\/assets\/aistudio\/.*/i,
+              urlPattern: /\/assets\/(aistudio|guides)\/.*/i,
               handler: 'StaleWhileRevalidate',
               options: {
                 cacheName: 'atm-assets-cache',
                 expiration: {
-                  maxEntries: 60,
+                  maxEntries: 100,
                   maxAgeSeconds: 60 * 60 * 24 * 90,
                 },
                 cacheableResponse: {
@@ -153,8 +153,8 @@ export default defineConfig(() => {
           if (error) {
             return;
           }
-          const distDir = path.resolve(__dirname, 'dist');
-          const srcAssets = path.resolve(__dirname, 'src/assets');
+          const distDir = path.resolve(import.meta.dirname, 'dist');
+          const srcAssets = path.resolve(import.meta.dirname, 'src/assets');
           const distAssets = path.resolve(distDir, 'src/assets');
           if (fs.existsSync(distDir) && fs.existsSync(srcAssets)) {
             fs.cpSync(srcAssets, distAssets, {recursive: true, force: true});
@@ -164,10 +164,12 @@ export default defineConfig(() => {
     ],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        '@': path.resolve(import.meta.dirname, '.'),
       },
     },
     server: {
+      port: 3000,
+      host: '0.0.0.0',
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
       // Do not modify—file watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',

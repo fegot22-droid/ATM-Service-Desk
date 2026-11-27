@@ -7,7 +7,15 @@ const BASE = RAW_BASE.endsWith('/') ? RAW_BASE : `${RAW_BASE}/`;
 export const ERROR_CODES_URL = `${BASE}assets/aistudio/error_codes_9f400606.json`;
 export const SCHEMES_URL = `${BASE}assets/aistudio/schemes_26bbeb13.json`;
 
-export const GUIDE_SOURCES = [
+export interface GuideSourceEntry {
+  id: string;
+  subtitle: string;
+  sourceFileName: string;
+  url: string;
+  sourceFileUrl?: string;
+}
+
+export const GUIDE_SOURCES: readonly GuideSourceEntry[] = [
   {
     id: 'ncr',
     subtitle: 'Установка ПО Aptra 04.02 / 03.04 на SelfServ',
@@ -25,8 +33,20 @@ export const GUIDE_SOURCES = [
     subtitle: 'Настройка Windows, ключей, NeoVideo и камер',
     sourceFileName: 'GRG_nastroika.pdf',
     url: `${BASE}assets/aistudio/grg_1ebb89c6.md`,
+    sourceFileUrl: `${BASE}assets/guides/GRG_nastroika.pdf`,
   },
-] as const;
+];
+
+export const GUIDE_IMAGE_URLS: Record<string, string> = Object.fromEntries(
+  Array.from({length: 25}, (_, idx) => {
+    const fileName = `grg_image${idx + 1}.jpg`;
+    return [fileName, `${BASE}assets/guides/${fileName}`];
+  }),
+);
+
+export function getGuideImageUrl(fileName: string): string {
+  return GUIDE_IMAGE_URLS[fileName] ?? '';
+}
 
 export const SCHEME_IMAGE_URLS: Record<string, string> = {
   ccdm_sensor_1: `${BASE}assets/aistudio/ccdm_sensor_1_b867b700.jpg`,

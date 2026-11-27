@@ -74,9 +74,10 @@ export function useAtmData(): AtmDataState {
 
         const builtErrIndexes = buildIndexes(errJson);
         const builtSensors = buildSensorIndex(schJson);
-        const parsedGuides = GUIDE_SOURCES.map((src, idx) =>
-          parseGuideMarkdown(src.id, src.subtitle, src.sourceFileName, guideTexts[idx]),
-        );
+        const parsedGuides = GUIDE_SOURCES.map((src, idx) => ({
+          ...parseGuideMarkdown(src.id, src.subtitle, src.sourceFileName, guideTexts[idx]),
+          sourceFileUrl: src.sourceFileUrl,
+        }));
 
         setErrorDb(errJson);
         setErrorIndexes(builtErrIndexes);
