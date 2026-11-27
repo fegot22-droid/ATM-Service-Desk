@@ -1,0 +1,8 @@
+{
+  "name": "Remix ATM Service Desk — Коды ошибок, датчики и инструкции",
+  "description": "Справочник инженера банкоматов: поиск кодов ошибок GRG, Wincor CCDM и CMD-V4, интерактивные схемы датчиков и инструкции по настройке NCR, CINEO и GRG.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
