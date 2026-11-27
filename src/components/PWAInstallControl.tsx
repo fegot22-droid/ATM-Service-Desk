@@ -41,20 +41,20 @@ export function PWAInstallControl({compact = false}: PWAInstallControlProps) {
           role="dialog"
           aria-modal="true"
           aria-labelledby="pwa-guide-title"
-          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-slate-900/50 dark:bg-slate-950/75 backdrop-blur-xs p-0 sm:p-4"
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-slate-900/50 dark:bg-neutral-950/80 backdrop-blur-xs p-0 sm:p-4"
         >
-          <div className="w-full sm:max-w-md bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-t-2xl sm:rounded-2xl p-6 pb-safe space-y-4 shadow-xl">
+          <div className="w-full sm:max-w-md bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-t-2xl sm:rounded-2xl p-6 pb-safe space-y-4 shadow-xl">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <h2
                   id="pwa-guide-title"
-                  className="text-base font-bold text-slate-900 dark:text-slate-100"
+                  className="text-base font-bold text-slate-900 dark:text-neutral-100"
                 >
                   {isIOS
                     ? 'Установка на iPhone / iPad'
                     : 'Установка на Android как приложение'}
                 </h2>
-                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                <p className="text-xs text-slate-500 dark:text-neutral-400 mt-1">
                   Все базы ошибок, схемы датчиков и инструкции работают офлайн после установки.
                 </p>
               </div>
@@ -62,14 +62,14 @@ export function PWAInstallControl({compact = false}: PWAInstallControlProps) {
                 type="button"
                 onClick={() => setShowGuide(false)}
                 aria-label="Закрыть подсказку по установке"
-                className="p-2 -mr-2 -mt-1 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 rounded-lg min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                className="p-2 -mr-2 -mt-1 text-slate-400 hover:text-slate-700 dark:hover:text-neutral-200 rounded-lg min-h-[44px] min-w-[44px] flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
               >
                 <X className="w-5 h-5" aria-hidden="true" />
               </button>
             </div>
 
             {isIOS ? (
-              <ol className="space-y-2.5 text-sm text-slate-700 dark:text-slate-300 list-decimal list-inside">
+              <ol className="space-y-2.5 text-sm text-slate-700 dark:text-neutral-300 list-decimal list-inside">
                 <li>
                   Нажмите кнопку <strong>«Поделиться»</strong> в нижней панели Safari.
                 </li>
@@ -78,7 +78,7 @@ export function PWAInstallControl({compact = false}: PWAInstallControlProps) {
                 </li>
               </ol>
             ) : (
-              <ol className="space-y-2.5 text-sm text-slate-700 dark:text-slate-300 list-decimal list-inside">
+              <ol className="space-y-2.5 text-sm text-slate-700 dark:text-neutral-300 list-decimal list-inside">
                 <li>
                   Откройте приложение в браузере <strong>Chrome</strong> на Android.
                 </li>
@@ -113,7 +113,7 @@ export function PWAInstallControl({compact = false}: PWAInstallControlProps) {
         className={`inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
           isInstallable
             ? 'bg-blue-700 hover:bg-blue-800 text-white px-3.5 py-2 text-xs sm:text-sm min-h-[40px]'
-            : 'bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 px-3 py-2 text-xs sm:text-sm min-h-[40px]'
+            : 'bg-slate-100 dark:bg-neutral-700 hover:bg-slate-200 dark:hover:bg-neutral-600 text-slate-800 dark:text-neutral-100 border border-slate-200 dark:border-neutral-600 px-3 py-2 text-xs sm:text-sm min-h-[40px]'
         }`}
       >
         {isInstallable ? (

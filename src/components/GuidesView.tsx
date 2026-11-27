@@ -74,15 +74,15 @@ function CopyableCodeBlock({text, searchNeedle}: {text: string; searchNeedle: st
   };
 
   return (
-    <div className="my-2.5 bg-slate-900 dark:bg-slate-950 text-slate-100 rounded-lg border border-slate-800 overflow-hidden">
-      <div className="flex items-center justify-between px-3 py-1.5 border-b border-slate-800 bg-slate-950/60">
-        <span className="text-[11px] font-mono text-slate-400">
+    <div className="my-2.5 bg-neutral-900 dark:bg-neutral-900 text-neutral-100 rounded-lg border border-neutral-800 dark:border-neutral-700 overflow-hidden">
+      <div className="flex items-center justify-between px-3 py-1.5 border-b border-neutral-800 dark:border-neutral-700 bg-neutral-950/60">
+        <span className="text-[11px] font-mono text-neutral-400">
           Параметр / путь
         </span>
         <button
           type="button"
           onClick={handleCopy}
-          className="inline-flex items-center gap-1 text-[11px] font-medium text-slate-300 hover:text-white cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded px-1.5 py-0.5"
+          className="inline-flex items-center gap-1 text-[11px] font-medium text-neutral-300 hover:text-white cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded px-1.5 py-0.5"
         >
           {copied ? (
             <>
@@ -118,12 +118,12 @@ function SectionBody({
           return (
             <div
               key={`img-${bIdx}`}
-              className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400"
+              className="flex items-center gap-2.5 px-3 py-2 rounded-lg bg-slate-50 dark:bg-neutral-900/70 border border-slate-200/80 dark:border-neutral-700 text-xs text-slate-500 dark:text-neutral-400"
             >
-              <ImageIcon className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500 shrink-0" aria-hidden="true" />
+              <ImageIcon className="w-3.5 h-3.5 text-slate-400 dark:text-neutral-500 shrink-0" aria-hidden="true" />
               <span>
                 Иллюстрация из документа:{' '}
-                <span className="font-mono text-slate-700 dark:text-slate-200">{block.value}</span>
+                <span className="font-mono text-slate-700 dark:text-neutral-200">{block.value}</span>
               </span>
             </div>
           );
@@ -146,7 +146,7 @@ function SectionBody({
                 return (
                   <p
                     key={`seg-${sIdx}`}
-                    className="text-sm sm:text-[15px] leading-relaxed text-slate-900 dark:text-slate-100 pl-3 border-l border-slate-200 dark:border-slate-700 wrap-anywhere"
+                    className="text-sm sm:text-[15px] leading-relaxed text-slate-900 dark:text-neutral-100 pl-3 border-l border-slate-200 dark:border-neutral-700 wrap-anywhere"
                   >
                     <HighlightMatch text={seg.text} needle={searchNeedle} />
                   </p>
@@ -155,7 +155,7 @@ function SectionBody({
               return (
                 <p
                   key={`seg-${sIdx}`}
-                  className="text-sm sm:text-[15px] leading-relaxed text-slate-800 dark:text-slate-200 wrap-anywhere"
+                  className="text-sm sm:text-[15px] leading-relaxed text-slate-800 dark:text-neutral-200 wrap-anywhere"
                 >
                   <HighlightMatch text={seg.text} needle={searchNeedle} />
                 </p>
@@ -227,7 +227,7 @@ export function GuidesView({
 
   if (!activeGuide) {
     return (
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-8 text-center text-sm text-slate-600 dark:text-slate-400">
+      <div className="bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-xl p-8 text-center text-sm text-slate-600 dark:text-neutral-400">
         Инструкции пока не загружены.
       </div>
     );
@@ -275,14 +275,14 @@ export function GuidesView({
       {/* Header & Controls */}
       <section
         aria-label="Выбор инструкции и режим чтения"
-        className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-5 sm:p-6 space-y-4 transition-colors"
+        className="bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-xl p-5 sm:p-6 space-y-4 transition-colors"
       >
         <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
           <div>
-            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-neutral-100">
               Инструкции по настройке и запуску
             </h1>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+            <p className="text-sm text-slate-600 dark:text-neutral-400 mt-1">
               {activeGuide.subtitle} · {activeGuide.sourceFileName} ·{' '}
               <span className="tabular-nums">{activeGuide.sections.length} разделов</span>
             </p>
@@ -296,7 +296,7 @@ export function GuidesView({
                 type="button"
                 onClick={resetGuideProgress}
                 aria-label="Сбросить отметки выполнения"
-                className="inline-flex items-center gap-1 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 cursor-pointer"
+                className="inline-flex items-center gap-1 text-slate-500 dark:text-neutral-400 hover:text-slate-800 dark:hover:text-neutral-200 cursor-pointer"
               >
                 <RotateCcw className="w-3.5 h-3.5" aria-hidden="true" />
               </button>
@@ -307,7 +307,7 @@ export function GuidesView({
         {/* Guide Switcher & Read Mode Toggle */}
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div
-            className="flex flex-wrap items-center gap-1.5 p-1 bg-slate-100 dark:bg-slate-800 rounded-lg"
+            className="flex flex-wrap items-center gap-1.5 p-1 bg-slate-100 dark:bg-neutral-900 rounded-lg"
             role="group"
             aria-label="Модель банкомата"
           >
@@ -321,8 +321,8 @@ export function GuidesView({
                   aria-pressed={active}
                   className={`px-3.5 py-2 min-h-[40px] sm:min-h-0 text-xs sm:text-sm font-medium rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                     active
-                      ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                      ? 'bg-white dark:bg-neutral-800 text-slate-900 dark:text-neutral-100 shadow-xs'
+                      : 'text-slate-600 dark:text-neutral-400 hover:text-slate-900 dark:hover:text-neutral-100'
                   }`}
                 >
                   {g.id.toUpperCase()}
@@ -332,7 +332,7 @@ export function GuidesView({
           </div>
 
           <div
-            className="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-slate-800 rounded-lg"
+            className="flex items-center gap-1.5 p-1 bg-slate-100 dark:bg-neutral-900 rounded-lg"
             role="group"
             aria-label="Режим отображения инструкции"
           >
@@ -342,8 +342,8 @@ export function GuidesView({
               aria-pressed={readMode === 'section'}
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 min-h-[36px] sm:min-h-0 text-xs font-medium rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                 readMode === 'section'
-                  ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs'
-                  : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                  ? 'bg-white dark:bg-neutral-800 text-slate-900 dark:text-neutral-100 shadow-xs'
+                  : 'text-slate-600 dark:text-neutral-400 hover:text-slate-900 dark:hover:text-neutral-100'
               }`}
             >
               <List className="w-3.5 h-3.5" aria-hidden="true" />
@@ -355,8 +355,8 @@ export function GuidesView({
               aria-pressed={readMode === 'full'}
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 min-h-[36px] sm:min-h-0 text-xs font-medium rounded-md transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                 readMode === 'full'
-                  ? 'bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-xs'
-                  : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white'
+                  ? 'bg-white dark:bg-neutral-800 text-slate-900 dark:text-neutral-100 shadow-xs'
+                  : 'text-slate-600 dark:text-neutral-400 hover:text-slate-900 dark:hover:text-neutral-100'
               }`}
             >
               <BookOpen className="w-3.5 h-3.5" aria-hidden="true" />
@@ -372,7 +372,7 @@ export function GuidesView({
               Поиск по тексту инструкций
             </label>
             <Search
-              className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
+              className="w-4 h-4 text-slate-400 dark:text-neutral-500 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
               aria-hidden="true"
             />
             <input
@@ -398,14 +398,14 @@ export function GuidesView({
                 }
               }}
               placeholder="Поиск по всем инструкциям: Ploutus, 50000, NeoVideo, Keepaliv..."
-              className="w-full min-h-[44px] pl-10 pr-10 py-2 text-sm bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg text-slate-900 dark:text-slate-100 placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
+              className="w-full min-h-[44px] pl-10 pr-10 py-2 text-sm bg-white dark:bg-neutral-900 border border-slate-300 dark:border-neutral-700 rounded-lg text-slate-900 dark:text-neutral-100 placeholder:text-slate-400 dark:placeholder:text-neutral-500 focus:outline-none focus-visible:ring-2 focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
                 aria-label="Очистить поиск по инструкции"
-                className="absolute right-1.5 top-1/2 -translate-y-1/2 p-2 min-h-[36px] min-w-[36px] flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 rounded cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                className="absolute right-1.5 top-1/2 -translate-y-1/2 p-2 min-h-[36px] min-w-[36px] flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-neutral-200 rounded cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
               >
                 <X className="w-4 h-4" aria-hidden="true" />
               </button>
@@ -414,7 +414,7 @@ export function GuidesView({
 
           {otherGuideMatches.length > 0 && (
             <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
-              <span className="text-slate-500 dark:text-slate-400 shrink-0">Найдено в других инструкциях:</span>
+              <span className="text-slate-500 dark:text-neutral-400 shrink-0">Найдено в других инструкциях:</span>
               {otherGuideMatches.slice(0, 6).map((m) => (
                 <button
                   key={`${m.guideId}-${m.sectionIndex}`}
@@ -436,25 +436,25 @@ export function GuidesView({
       </section>
 
       {/* Mobile Collapsible TOC (< lg) */}
-      <div className="lg:hidden bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+      <div className="lg:hidden bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-xl overflow-hidden">
         <button
           type="button"
           onClick={() => setMobileTocOpen((v) => !v)}
           aria-expanded={mobileTocOpen}
-          className="w-full px-4 py-3 flex items-center justify-between gap-3 text-left text-sm font-semibold text-slate-900 dark:text-slate-100 cursor-pointer"
+          className="w-full px-4 py-3 flex items-center justify-between gap-3 text-left text-sm font-semibold text-slate-900 dark:text-neutral-100 cursor-pointer"
         >
           <span>
             Содержание · раздел {safeSectionIdx + 1} из {activeGuide.sections.length}
           </span>
           <ChevronDown
-            className={`w-4 h-4 text-slate-500 dark:text-slate-400 transition-transform ${
+            className={`w-4 h-4 text-slate-500 dark:text-neutral-400 transition-transform ${
               mobileTocOpen ? 'rotate-180' : ''
             }`}
             aria-hidden="true"
           />
         </button>
         {mobileTocOpen && (
-          <ul className="border-t border-slate-200 dark:border-slate-800 divide-y divide-slate-100 dark:divide-slate-800 max-h-72 overflow-y-auto">
+          <ul className="border-t border-slate-200 dark:border-neutral-700 divide-y divide-slate-100 dark:divide-neutral-700 max-h-72 overflow-y-auto">
             {activeGuide.sections.map((sec, idx) => {
               const isSelected = readMode === 'section' && idx === safeSectionIdx;
               const isMatch = matchingSectionIndexes.includes(idx);
@@ -470,12 +470,12 @@ export function GuidesView({
                     }}
                     className={`w-full text-left px-4 py-2.5 text-sm flex items-center justify-between gap-2 cursor-pointer ${
                       isSelected
-                        ? 'bg-blue-50 dark:bg-blue-950/60 text-blue-800 dark:text-blue-200 font-semibold'
-                        : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/60'
+                        ? 'bg-blue-50 dark:bg-neutral-700 text-blue-800 dark:text-blue-300 font-semibold'
+                        : 'text-slate-700 dark:text-neutral-300 hover:bg-slate-50 dark:hover:bg-neutral-700/60'
                     }`}
                   >
                     <span className="flex items-baseline gap-2 min-w-0">
-                      <span className="font-mono text-xs tabular-nums text-slate-400 dark:text-slate-500 shrink-0">
+                      <span className="font-mono text-xs tabular-nums text-slate-400 dark:text-neutral-500 shrink-0">
                         {String(idx + 1).padStart(2, '0')}.
                       </span>
                       <span className="truncate">{sec.title}</span>
@@ -500,17 +500,17 @@ export function GuidesView({
         <nav
           id="guide-toc"
           aria-label="Оглавление инструкции"
-          className="hidden lg:block lg:col-span-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden"
+          className="hidden lg:block lg:col-span-4 bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-xl overflow-hidden"
         >
-          <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/50 flex items-baseline justify-between">
-            <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-100">Содержание</h2>
+          <div className="px-4 py-3 border-b border-slate-200 dark:border-neutral-700 bg-slate-50/70 dark:bg-neutral-900/60 flex items-baseline justify-between">
+            <h2 className="text-sm font-semibold text-slate-900 dark:text-neutral-100">Содержание</h2>
             {searchQuery.trim() && (
-              <span className="text-xs text-slate-500 dark:text-slate-400 tabular-nums">
+              <span className="text-xs text-slate-500 dark:text-neutral-400 tabular-nums">
                 Совпадений: {matchingSectionIndexes.length}
               </span>
             )}
           </div>
-          <ul className="divide-y divide-slate-100 dark:divide-slate-800 max-h-[640px] overflow-y-auto">
+          <ul className="divide-y divide-slate-100 dark:divide-neutral-700 max-h-[640px] overflow-y-auto">
             {activeGuide.sections.map((sec, idx) => {
               const isSelected = readMode === 'section' && idx === safeSectionIdx;
               const isMatch = matchingSectionIndexes.includes(idx);
@@ -526,12 +526,12 @@ export function GuidesView({
                     }}
                     className={`w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center justify-between gap-2 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-600 ${
                       isSelected
-                        ? 'bg-blue-50 dark:bg-blue-950/60 text-blue-800 dark:text-blue-200 font-semibold'
-                        : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-white'
+                        ? 'bg-blue-50 dark:bg-neutral-700 text-blue-800 dark:text-blue-300 font-semibold'
+                        : 'text-slate-700 dark:text-neutral-300 hover:bg-slate-50 dark:hover:bg-neutral-700/60 hover:text-slate-900 dark:hover:text-white'
                     }`}
                   >
                     <span className="flex items-baseline gap-2.5 min-w-0">
-                      <span className="font-mono text-xs tabular-nums text-slate-400 dark:text-slate-500 shrink-0">
+                      <span className="font-mono text-xs tabular-nums text-slate-400 dark:text-neutral-500 shrink-0">
                         {String(idx + 1).padStart(2, '0')}.
                       </span>
                       <span className="leading-snug">{sec.title}</span>
@@ -547,7 +547,7 @@ export function GuidesView({
               );
             })}
             {searchQuery.trim() && matchingSectionIndexes.length === 0 && (
-              <li className="px-4 py-6 text-center text-xs text-slate-500 dark:text-slate-400">
+              <li className="px-4 py-6 text-center text-xs text-slate-500 dark:text-neutral-400">
                 В текущей инструкции разделы не найдены.
               </li>
             )}
@@ -555,11 +555,11 @@ export function GuidesView({
         </nav>
 
         {/* Reading Pane */}
-        <article className="lg:col-span-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+        <article className="lg:col-span-8 bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-xl overflow-hidden">
           {readMode === 'section' ? (
             <>
-              <div className="px-5 sm:px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-950/50 flex flex-wrap items-center justify-between gap-3">
-                <h2 className="text-lg font-bold text-slate-900 dark:text-slate-100">
+              <div className="px-5 sm:px-6 py-4 border-b border-slate-200 dark:border-neutral-700 bg-slate-50/60 dark:bg-neutral-900/60 flex flex-wrap items-center justify-between gap-3">
+                <h2 className="text-lg font-bold text-slate-900 dark:text-neutral-100">
                   <HighlightMatch
                     text={currentSection?.title ?? ''}
                     needle={searchQuery}
@@ -573,17 +573,17 @@ export function GuidesView({
                     className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium rounded-md border transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                       isCurrentCompleted
                         ? 'bg-emerald-50 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-300 border-emerald-200 dark:border-emerald-800'
-                        : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border-slate-200 dark:border-slate-700'
+                        : 'bg-white dark:bg-neutral-700 text-slate-600 dark:text-neutral-200 hover:text-slate-900 dark:hover:text-white border-slate-200 dark:border-neutral-600'
                     }`}
                   >
                     {isCurrentCompleted ? (
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
                     ) : (
-                      <Circle className="w-3.5 h-3.5 text-slate-400 dark:text-slate-500" aria-hidden="true" />
+                      <Circle className="w-3.5 h-3.5 text-slate-400 dark:text-neutral-400" aria-hidden="true" />
                     )}
                     <span>{isCurrentCompleted ? 'Выполнено' : 'Отметить шаг'}</span>
                   </button>
-                  <span className="text-xs font-mono tabular-nums text-slate-500 dark:text-slate-400">
+                  <span className="text-xs font-mono tabular-nums text-slate-500 dark:text-neutral-400">
                     {safeSectionIdx + 1} / {activeGuide.sections.length}
                   </span>
                 </div>
@@ -596,18 +596,18 @@ export function GuidesView({
               </div>
 
               {/* Pagination Footer */}
-              <div className="px-5 sm:px-6 py-3.5 border-t border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-950/50 flex items-center justify-between gap-3">
+              <div className="px-5 sm:px-6 py-3.5 border-t border-slate-200 dark:border-neutral-700 bg-slate-50/50 dark:bg-neutral-900/60 flex items-center justify-between gap-3">
                 <button
                   type="button"
                   onClick={() => setSectionIdx((i) => Math.max(0, i - 1))}
                   disabled={safeSectionIdx === 0}
-                  className="inline-flex items-center gap-1.5 min-h-[44px] sm:min-h-0 px-3.5 py-2 text-xs sm:text-sm font-medium text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                  className="inline-flex items-center gap-1.5 min-h-[44px] sm:min-h-0 px-3.5 py-2 text-xs sm:text-sm font-medium text-slate-700 dark:text-neutral-100 bg-white dark:bg-neutral-700 hover:bg-slate-50 dark:hover:bg-neutral-600 border border-slate-200 dark:border-neutral-600 rounded-lg disabled:opacity-40 disabled:cursor-not-allowed whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
                 >
                   <ChevronLeft className="w-4 h-4" aria-hidden="true" />
                   <span>Назад</span>
                 </button>
 
-                <span className="text-xs text-slate-500 dark:text-slate-400 font-mono tabular-nums">
+                <span className="text-xs text-slate-500 dark:text-neutral-400 font-mono tabular-nums">
                   {safeSectionIdx + 1} / {activeGuide.sections.length}
                 </span>
 
@@ -625,15 +625,15 @@ export function GuidesView({
               </div>
             </>
           ) : (
-            <div className="divide-y divide-slate-200 dark:divide-slate-800">
-              <div className="px-6 py-4 bg-slate-50/60 dark:bg-slate-950/50 flex items-baseline justify-between">
-                <h2 className="text-lg font-bold text-slate-900 dark:text-slate-100">{activeGuide.title}</h2>
-                <span className="text-xs font-mono tabular-nums text-slate-500 dark:text-slate-400">
+            <div className="divide-y divide-slate-200 dark:divide-neutral-700">
+              <div className="px-6 py-4 bg-slate-50/60 dark:bg-neutral-900/60 flex items-baseline justify-between">
+                <h2 className="text-lg font-bold text-slate-900 dark:text-neutral-100">{activeGuide.title}</h2>
+                <span className="text-xs font-mono tabular-nums text-slate-500 dark:text-neutral-400">
                   {matchingSectionIndexes.length} разделов
                 </span>
               </div>
               {matchingSectionIndexes.length === 0 ? (
-                <div className="p-8 text-center text-sm text-slate-500 dark:text-slate-400">
+                <div className="p-8 text-center text-sm text-slate-500 dark:text-neutral-400">
                   По запросу «{searchQuery}» совпадений не найдено.
                 </div>
               ) : (
@@ -641,8 +641,8 @@ export function GuidesView({
                   const sec = activeGuide.sections[idx];
                   return (
                     <section key={`full-sec-${idx}`} className="p-6 max-w-3xl space-y-3">
-                      <h3 className="text-base font-bold text-slate-900 dark:text-slate-100">
-                        <span className="font-mono text-sm text-slate-400 dark:text-slate-500 mr-2 tabular-nums">
+                      <h3 className="text-base font-bold text-slate-900 dark:text-neutral-100">
+                        <span className="font-mono text-sm text-slate-400 dark:text-neutral-500 mr-2 tabular-nums">
                           {String(idx + 1).padStart(2, '0')}.
                         </span>
                         <HighlightMatch text={sec.title} needle={searchQuery} />

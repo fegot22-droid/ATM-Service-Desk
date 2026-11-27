@@ -39,7 +39,7 @@ function applyThemeToDocument(theme: ThemeMode) {
   }
   const metaThemeColor = document.querySelector('meta[name="theme-color"]');
   if (metaThemeColor) {
-    metaThemeColor.setAttribute('content', theme === 'dark' ? '#0f172a' : '#1d4ed8');
+    metaThemeColor.setAttribute('content', theme === 'dark' ? '#171717' : '#1d4ed8');
   }
 }
 

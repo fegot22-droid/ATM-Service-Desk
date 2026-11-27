@@ -24,6 +24,14 @@ import {
 } from './sensorLookup';
 import {parseGuideMarkdown, searchAllGuides, segmentGuideText} from './guideParser';
 import {parseUrlState, serializeUrlState} from './urlState';
+import {getNextTheme, parseStoredTheme, resolveTheme} from './theme';
+import {
+  clampZoom,
+  computeFocalScroll,
+  computePinchZoom,
+  getTouchDistance,
+  getTouchMidpoint,
+} from './pinchZoom';
 
 const DATA_DIR = path.resolve(process.cwd(), 'public/assets/aistudio');
 
@@ -236,8 +244,6 @@ test('urlState round-trips errors, schemes, and guides parameters cleanly', () =
   assert.equal(parseUrlState(guideSearch).section, 2);
 });
 
-import {getNextTheme, parseStoredTheme, resolveTheme} from './theme';
-
 test('theme helpers resolve stored overrides, system preference fallback, and toggle cleanly', () => {
   assert.equal(parseStoredTheme('dark'), 'dark');
   assert.equal(parseStoredTheme('light'), 'light');
@@ -248,4 +254,47 @@ test('theme helpers resolve stored overrides, system preference fallback, and to
   assert.equal(resolveTheme('dark', false), 'dark');
   assert.equal(getNextTheme('light'), 'dark');
   assert.equal(getNextTheme('dark'), 'light');
+});
+
+test('pinchZoom helpers clamp scale, track finger distance/midpoint, and anchor focal scroll', () => {
+  assert.equal(clampZoom(0.4), 1);
+  assert.equal(clampZoom(7.2), 5);
+  assert.equal(clampZoom(Number.NaN), 1);
+  assert.equal(clampZoom(2.3456), 2.346);
+
+  const dist = getTouchDistance({clientX: 100, clientY: 100}, {clientX: 100, clientY: 200});
+  assert.equal(dist, 100);
+
+  const mid = getTouchMidpoint({clientX: 100, clientY: 120}, {clientX: 200, clientY: 180});
+  assert.deepEqual(mid, {clientX: 150, clientY: 150});
+
+  assert.equal(computePinchZoom(100, 200, 1.5), 3);
+  assert.equal(computePinchZoom(100, 30, 1.2), 1);
+  assert.equal(computePinchZoom(0, 200, 1.5), 1.5);
+
+  // Pure pinch 1x -> 2x around focal (150, 100) with initial scroll (100, 50)
+  const purePinch = computeFocalScroll({
+    prevZoom: 1,
+    nextZoom: 2,
+    prevFocalX: 150,
+    prevFocalY: 100,
+    nextFocalX: 150,
+    nextFocalY: 100,
+    currentScrollLeft: 100,
+    currentScrollTop: 50,
+  });
+  assert.deepEqual(purePinch, {scrollLeft: 350, scrollTop: 200});
+
+  // Two-finger pan without zoom change
+  const panOnly = computeFocalScroll({
+    prevZoom: 2,
+    nextZoom: 2,
+    prevFocalX: 150,
+    prevFocalY: 100,
+    nextFocalX: 170,
+    nextFocalY: 80,
+    currentScrollLeft: 100,
+    currentScrollTop: 50,
+  });
+  assert.deepEqual(panOnly, {scrollLeft: 80, scrollTop: 70});
 });

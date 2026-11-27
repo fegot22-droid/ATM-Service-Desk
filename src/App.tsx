@@ -154,13 +154,13 @@ export default function App() {
     : 0;
 
   return (
-    <div className="min-h-dvh bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col">
+    <div className="min-h-dvh bg-slate-50 dark:bg-neutral-900 text-slate-900 dark:text-neutral-100 flex flex-col">
       {/* Top Bar: static on mobile (keeps <=15% sticky cap with bottom nav), sticky on desktop */}
-      <header className="md:sticky md:top-0 z-30 h-14 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 lg:px-6 flex items-center justify-between gap-4 md:gap-8">
+      <header className="md:sticky md:top-0 z-30 h-14 bg-white dark:bg-neutral-800 border-b border-slate-200 dark:border-neutral-700 px-4 lg:px-6 flex items-center justify-between gap-4 md:gap-8">
         <button
           type="button"
           onClick={() => selectTab('errors')}
-          className="text-base sm:text-lg font-display font-bold tracking-tight text-slate-900 dark:text-slate-100 whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded"
+          className="text-base sm:text-lg font-display font-bold tracking-tight text-slate-900 dark:text-neutral-100 whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded"
         >
           ATM Service Desk
         </button>
@@ -180,7 +180,7 @@ export default function App() {
                 className={`text-sm font-medium py-1 border-b-2 transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-t ${
                   active
                     ? 'border-blue-700 dark:border-blue-400 text-blue-700 dark:text-blue-400'
-                    : 'border-transparent text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                    : 'border-transparent text-slate-600 dark:text-neutral-400 hover:text-slate-900 dark:hover:text-neutral-100'
                 }`}
               >
                 {item.label}
@@ -196,7 +196,7 @@ export default function App() {
             aria-pressed={isDark}
             aria-label={isDark ? 'Включить светлую тему' : 'Включить тёмную тему'}
             title={isDark ? 'Светлая тема' : 'Тёмная тема'}
-            className="inline-flex items-center justify-center min-h-[40px] min-w-[40px] p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+            className="inline-flex items-center justify-center min-h-[40px] min-w-[40px] p-2 rounded-lg border border-slate-200 dark:border-neutral-600 bg-slate-50 dark:bg-neutral-700 text-slate-700 dark:text-neutral-100 hover:bg-slate-100 dark:hover:bg-neutral-600 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
           >
             {isDark ? (
               <Sun className="w-4 h-4 text-amber-400" aria-hidden="true" />
@@ -223,7 +223,7 @@ export default function App() {
       <div className="flex-1 max-w-[1440px] w-full mx-auto flex">
         <aside
           aria-label="Навигация рабочего места"
-          className="hidden lg:flex lg:flex-col lg:w-64 shrink-0 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 justify-between"
+          className="hidden lg:flex lg:flex-col lg:w-64 shrink-0 border-r border-slate-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 p-4 justify-between"
         >
           <div className="space-y-6">
             <nav aria-label="Разделы справочника" className="space-y-1">
@@ -238,8 +238,8 @@ export default function App() {
                     aria-current={active ? 'page' : undefined}
                     className={`w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                       active
-                        ? 'bg-blue-50 dark:bg-blue-950/60 text-blue-800 dark:text-blue-300'
-                        : 'text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800/70 hover:text-slate-900 dark:hover:text-slate-100'
+                        ? 'bg-blue-50 dark:bg-neutral-700 text-blue-800 dark:text-blue-400'
+                        : 'text-slate-700 dark:text-neutral-300 hover:bg-slate-50 dark:hover:bg-neutral-700/60 hover:text-slate-900 dark:hover:text-neutral-100'
                     }`}
                   >
                     <Icon className="w-4 h-4 shrink-0" aria-hidden="true" />
@@ -250,8 +250,8 @@ export default function App() {
             </nav>
 
             {favorites.length > 0 && (
-              <div className="pt-5 border-t border-slate-100 dark:border-slate-800 space-y-2 px-2">
-                <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+              <div className="pt-5 border-t border-slate-100 dark:border-neutral-700 space-y-2 px-2">
+                <p className="text-xs font-semibold text-slate-500 dark:text-neutral-400 flex items-center gap-1.5">
                   <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" aria-hidden="true" />
                   <span>Избранные коды</span>
                 </p>
@@ -261,12 +261,12 @@ export default function App() {
                       <button
                         type="button"
                         onClick={() => openFavoriteCode(fav)}
-                        className="w-full text-left px-2 py-1.5 rounded-md hover:bg-slate-50 dark:hover:bg-slate-800/70 transition-colors flex items-baseline justify-between gap-2 text-xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
+                        className="w-full text-left px-2 py-1.5 rounded-md hover:bg-slate-50 dark:hover:bg-neutral-700/60 transition-colors flex items-baseline justify-between gap-2 text-xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600"
                       >
-                        <span className="font-mono font-semibold text-slate-900 dark:text-slate-100 tabular-nums">
+                        <span className="font-mono font-semibold text-slate-900 dark:text-neutral-100 tabular-nums">
                           {fav.key}
                         </span>
-                        <span className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
+                        <span className="text-[11px] text-slate-500 dark:text-neutral-400 truncate">
                           {CATEGORY_TITLES[fav.category]}
                         </span>
                       </button>
@@ -277,44 +277,44 @@ export default function App() {
             )}
 
             {data.status === 'ready' && data.errorDb && data.schemesDb && (
-              <div className="pt-5 border-t border-slate-100 dark:border-slate-800 space-y-2.5 px-2">
-                <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <div className="pt-5 border-t border-slate-100 dark:border-neutral-700 space-y-2.5 px-2">
+                <p className="text-xs font-semibold text-slate-500 dark:text-neutral-400">
                   Состав справочника
                 </p>
                 <dl className="space-y-1.5 text-xs">
-                  <div className="flex items-center justify-between text-slate-600 dark:text-slate-400">
+                  <div className="flex items-center justify-between text-slate-600 dark:text-neutral-400">
                     <dt>Коды GRG</dt>
-                    <dd className="font-mono tabular-nums text-slate-900 dark:text-slate-100">
+                    <dd className="font-mono tabular-nums text-slate-900 dark:text-neutral-100">
                       {data.errorDb.meta.grg_count.toLocaleString('ru-RU')}
                     </dd>
                   </div>
-                  <div className="flex items-center justify-between text-slate-600 dark:text-slate-400">
+                  <div className="flex items-center justify-between text-slate-600 dark:text-neutral-400">
                     <dt>Коды Wincor CCDM</dt>
-                    <dd className="font-mono tabular-nums text-slate-900 dark:text-slate-100">
+                    <dd className="font-mono tabular-nums text-slate-900 dark:text-neutral-100">
                       {data.errorDb.meta.ccdm_count}
                     </dd>
                   </div>
-                  <div className="flex items-center justify-between text-slate-600 dark:text-slate-400">
+                  <div className="flex items-center justify-between text-slate-600 dark:text-neutral-400">
                     <dt>Коды CMD-V4</dt>
-                    <dd className="font-mono tabular-nums text-slate-900 dark:text-slate-100">
+                    <dd className="font-mono tabular-nums text-slate-900 dark:text-neutral-100">
                       {data.errorDb.meta.cmd_v4_count}
                     </dd>
                   </div>
-                  <div className="flex items-center justify-between text-slate-600 dark:text-slate-400 pt-1.5 border-t border-slate-100 dark:border-slate-800">
+                  <div className="flex items-center justify-between text-slate-600 dark:text-neutral-400 pt-1.5 border-t border-slate-100 dark:border-neutral-700">
                     <dt>Всего кодов</dt>
-                    <dd className="font-mono font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+                    <dd className="font-mono font-semibold tabular-nums text-slate-900 dark:text-neutral-100">
                       {totalErrorCodes.toLocaleString('ru-RU')}
                     </dd>
                   </div>
-                  <div className="flex items-center justify-between text-slate-600 dark:text-slate-400">
+                  <div className="flex items-center justify-between text-slate-600 dark:text-neutral-400">
                     <dt>Чертежи схем</dt>
-                    <dd className="font-mono tabular-nums text-slate-900 dark:text-slate-100">
+                    <dd className="font-mono tabular-nums text-slate-900 dark:text-neutral-100">
                       {Object.keys(data.schemesDb.images).length}
                     </dd>
                   </div>
-                  <div className="flex items-center justify-between text-slate-600 dark:text-slate-400">
+                  <div className="flex items-center justify-between text-slate-600 dark:text-neutral-400">
                     <dt>Инструкции</dt>
-                    <dd className="font-mono tabular-nums text-slate-900 dark:text-slate-100">
+                    <dd className="font-mono tabular-nums text-slate-900 dark:text-neutral-100">
                       {data.guides.length}
                     </dd>
                   </div>
@@ -323,11 +323,11 @@ export default function App() {
             )}
           </div>
 
-          <div className="space-y-3 pt-4 border-t border-slate-100 dark:border-slate-800">
+          <div className="space-y-3 pt-4 border-t border-slate-100 dark:border-neutral-700">
             <div className="px-1">
               <PWAInstallControl />
             </div>
-            <p className="text-[11px] text-slate-400 dark:text-slate-500 px-2">
+            <p className="text-[11px] text-slate-400 dark:text-neutral-500 px-2">
               GRG · Wincor Nixdorf · NCR
             </p>
           </div>
@@ -339,14 +339,14 @@ export default function App() {
               className="space-y-6 animate-pulse"
               aria-label="Загрузка справочника"
             >
-              <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 space-y-4">
-                <div className="h-7 w-72 bg-slate-200 dark:bg-slate-800 rounded" />
-                <div className="h-4 w-96 max-w-full bg-slate-100 dark:bg-slate-800/70 rounded" />
-                <div className="h-10 w-full bg-slate-100 dark:bg-slate-800/70 rounded-lg" />
+              <div className="bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-xl p-6 space-y-4">
+                <div className="h-7 w-72 bg-slate-200 dark:bg-neutral-700 rounded" />
+                <div className="h-4 w-96 max-w-full bg-slate-100 dark:bg-neutral-700/70 rounded" />
+                <div className="h-10 w-full bg-slate-100 dark:bg-neutral-700/70 rounded-lg" />
               </div>
-              <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 space-y-3">
-                <div className="h-5 w-48 bg-slate-200 dark:bg-slate-800 rounded" />
-                <div className="h-24 w-full bg-slate-100 dark:bg-slate-800/70 rounded-lg" />
+              <div className="bg-white dark:bg-neutral-800 border border-slate-200 dark:border-neutral-700 rounded-xl p-6 space-y-3">
+                <div className="h-5 w-48 bg-slate-200 dark:bg-neutral-700 rounded" />
+                <div className="h-24 w-full bg-slate-100 dark:bg-neutral-700/70 rounded-lg" />
               </div>
             </div>
           )}
@@ -354,17 +354,17 @@ export default function App() {
           {data.status === 'error' && (
             <div
               role="alert"
-              className="bg-white dark:bg-slate-900 border border-red-200 dark:border-red-900/60 rounded-xl p-8 text-center max-w-lg mx-auto my-8 space-y-4"
+              className="bg-white dark:bg-neutral-800 border border-red-200 dark:border-red-900/60 rounded-xl p-8 text-center max-w-lg mx-auto my-8 space-y-4"
             >
               <AlertCircle
                 className="w-10 h-10 text-red-600 dark:text-red-400 mx-auto"
                 aria-hidden="true"
               />
               <div>
-                <h1 className="text-base font-semibold text-slate-900 dark:text-slate-100">
+                <h1 className="text-base font-semibold text-slate-900 dark:text-neutral-100">
                   Ошибка загрузки данных справочника
                 </h1>
-                <p className="text-sm text-slate-600 dark:text-slate-400 mt-1">
+                <p className="text-sm text-slate-600 dark:text-neutral-400 mt-1">
                   {data.errorMessage || 'Проверьте соединение и повторите попытку.'}
                 </p>
               </div>
@@ -432,7 +432,7 @@ export default function App() {
       {/* Android-native Bottom Navigation Bar (thumb-zone ergonomic, < 768px) */}
       <nav
         aria-label="Нижняя навигация"
-        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 pb-safe"
+        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-neutral-800/95 backdrop-blur-md border-t border-slate-200 dark:border-neutral-700 pb-safe"
       >
         <div className="grid grid-cols-3 h-16">
           {NAV_ITEMS.map((item) => {
@@ -447,7 +447,7 @@ export default function App() {
                 className={`flex flex-col items-center justify-center gap-1 min-h-[48px] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue-600 ${
                   active
                     ? 'text-blue-700 dark:text-blue-400'
-                    : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
+                    : 'text-slate-500 dark:text-neutral-400 hover:text-slate-900 dark:hover:text-neutral-100'
                 }`}
               >
                 <Icon
